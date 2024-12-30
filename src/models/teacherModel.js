@@ -40,6 +40,6 @@ TeacherSchema.methods.comparePassword = async function(candidatePassword) {
   return bcrypt.compare(candidatePassword, this.password);
 };
 
-const Teacher = mongoose.models.Teacher || mongoose.model('Teacher', TeacherSchema);
+const Teacher = mongoose.models.teachers || mongoose.model('teachers', TeacherSchema);
 
 export default Teacher;

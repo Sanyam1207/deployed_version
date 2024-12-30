@@ -149,13 +149,13 @@ export default function Signup() {
         setLoading(true)
 
         try {
-            const response = await axios.post('/api/signup', {
+            const response = await axios.post('/api/teacher-signup', {
                 ...formData,
                 age: parseInt(formData.age)
             })
             
             if (response.status === 201) {
-                router.push('/student-login')
+                router.push('/teacher-login')
             }
         } catch (error: any) {
             setError(error.response?.data?.message || 'Something went wrong')
@@ -294,7 +294,7 @@ export default function Signup() {
                     >
                         {loading ? 'Signing up...' : 'Sign Up'}
                     </button>
-                    <Link href="/student-login" className="w-full">
+                    <Link href="/teacher-login" className="w-full">
                         <button type="button" className="w-full py-3 rounded-lg bg-gray-100 text-gray-700 font-semibold transition-all duration-200 hover:bg-gray-200 focus:ring-2 focus:ring-gray-300 focus:ring-offset-2">
                             Already have an account? Log In
                         </button>
