@@ -30,7 +30,7 @@ const Logo = () => (
 const LogoIcon = () => (
     <div className="text-blue-900 dark:text-white text-2xl font-bold">N</div>
 );
-const SidebarComponent = () => {
+const SidebarComponent = (components:any) => {
     const [open, setOpen] = useState<boolean>(false);
     const [isFeedbackFormOpen, setIsFeedbackFormOpen] = useState<boolean>(false);
     const [feedbackForm, setFeedbackForm] = useState<FeedbackForm>({

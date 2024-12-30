@@ -1,11 +1,11 @@
 "use client"
 import React from 'react'
-import SideBar from '../../component/acertinity/SideBarParent'
+import SidebarComponent from '../../component/sidebar/parentSidebar'
 import {BentoGridDemo} from '@/component/acertinity/WobbleCardTeacher'
 
 const Home = () => {
   return (
-    <SideBar components={<div className='flex align-middle '><BentoGridDemo /></div>}/>
+    <SidebarComponent components={<div className='flex align-middle '><BentoGridDemo /></div>}/>
   )
 }
 
