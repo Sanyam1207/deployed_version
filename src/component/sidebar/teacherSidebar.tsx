@@ -92,7 +92,7 @@ const SidebarComponent = (components:any) => {
         { label: "Attendance", href: "/attendance", icon: <IconBrandTabler className="text-blue-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" /> },
         {
                     label: "Community",
-                    href: "http://localhost:3020",
+                    href: "https://nav-shiksha-chat-isox.vercel.app/",
                     icon: <IconUsersGroup className="text-blue-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />,
                 },
         { label: "FeedBack And Complaints", href: "#", icon: <IconMessageCircle className="text-blue-700 dark:text-neutral-200 h-5 w-5 flex-shrink-0" />, onClick: handleFeedbackClick },
