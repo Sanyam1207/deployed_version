@@ -152,7 +152,7 @@ const ParentDashboard: React.FC = () => {
         <div className="bg-white shadow-xl rounded-xl overflow-hidden">
           <div className="bg-blue-600 text-white p-4">
             <h2 className="text-2xl font-semibold">
-              {selectedStudent.name}'s Learning Journey
+              {selectedStudent.name} Learning Journey
             </h2>
           </div>
           

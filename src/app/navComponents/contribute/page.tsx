@@ -6,7 +6,7 @@ const Contribute: React.FC = () => {
       <h1 className="text-4xl text-blue-600 mb-5">Contribute</h1>
       <p className="text-2xl text-red-600 font-bold mb-3">Coming Soon...</p>
       <p className="text-lg text-gray-600 text-center max-w-2xl">
-        We're working on adding a section where you can contribute to our project.
+        We are working on adding a section where you can contribute to our project.
         Stay tuned!
       </p>
     </div>
