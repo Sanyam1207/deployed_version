@@ -5,7 +5,6 @@ import { Book, GraduationCap, Award, Share2 } from "lucide-react";
 import { useSelector } from "react-redux";
 import type { RootState } from "../../redux/store";
 import SidebarComponent from "@/component/sidebar/sidebar";
-import ThemeToggle from "@/section/ThemeToggle";
 
 // Data Arrays
 const progressData = [

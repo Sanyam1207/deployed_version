@@ -17,6 +17,7 @@ interface SidebarLinkProps {
   link: Links;
   className?: string;
   onClick?: () => void | undefined; // Add this line to handle onClick events
+  labelClassName?: string; // 👈 Add this
 }
 
 // Update SidebarLink component
@@ -44,7 +45,10 @@ export const SidebarLink: React.FC<SidebarLinkProps> = ({
           display: animate ? (open ? "inline-block" : "none") : "inline-block",
           opacity: animate ? (open ? 1 : 0) : 1,
         }}
-        className="text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0"
+        className={cn(
+          "text-neutral-700 dark:text-neutral-200 text-sm group-hover/sidebar:translate-x-1 transition duration-150 whitespace-pre inline-block !p-0 !m-0",
+          props.labelClassName 
+        )}
       >
         {link.label}
       </motion.span>
