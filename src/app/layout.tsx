@@ -1,16 +1,15 @@
+import { Providers } from "@/redux/provider";
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
-import "./global.css"
 import { twMerge } from "tailwind-merge";
 import ThemeWrapper from "../redux/themeWrapper";
-import {Providers} from "@/redux/provider";
-import { url } from "inspector";
+import "./global.css";
 
 const dmSans = DM_Sans({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NavSiksha",
-  description: "NavShiksha: Empowering Rural Education Through Innovative Solutions",
+  title: "Rural Learn",
+  description: "Rural Learn: Empowering Rural Education Through Innovative Solutions",
   
 };
 

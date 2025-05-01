@@ -3,7 +3,7 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 import { RootState } from "@/redux/store";
 import SidebarComponent from "@/component/sidebar/teacherSidebar";
-import login from "../../../public/assets/login.png";
+import login from "../../../public/assets/login.png"
 import { Book, Presentation, Users, GraduationCap, FileText, Microscope } from "lucide-react";
 
 // Updated Data for Teacher Dashboard

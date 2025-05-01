@@ -10,6 +10,11 @@ const SUBJECTS = [
   'Geography', 'English', 'Computer Science'
 ];
 
+// Store API key in environment variable or in a secure way
+// Don't hardcode the API key in your frontend code
+const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY || '';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+
 export default function QuestionForm() {
   const [question, setQuestion] = useState<string>('');
   const [subject, setSubject] = useState<string>('');
@@ -17,6 +22,7 @@ export default function QuestionForm() {
   const [error, setError] = useState<string>('');
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
+  const [useGemini, setUseGemini] = useState<boolean>(true); // Toggle between API options
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,12 +31,62 @@ export default function QuestionForm() {
     setResponse('');
 
     try {
-      const res = await axios.post('http://localhost:5001/ask', { question, subject });
-      setResponse(res.data.response);
+      if (useGemini) {
+        // Use Gemini API directly
+        await callGeminiAPI();
+      } else {
+        // Use your existing backend
+        const res = await axios.post('http://localhost:5001/ask', { question, subject });
+        setResponse(res.data.response);
+      }
     } catch (err: any) {
+      console.error('Error:', err);
       setError(err.response?.data?.error || 'An unexpected error occurred');
     } finally {
       setLoading(false);
+    }
+  };
+
+  const callGeminiAPI = async () => {
+    try {
+      // Construct the prompt with the subject for context
+      const prompt = ` Can you please answer the question from Subject: ${subject}\n and Question: ${question} be precise, clear and concise. Also if the question is not from the subject then please inform that the question is not from the subject and it belong to other subject.`;
+      
+      // Call Gemini API
+      const response = await axios.post(
+        `${GEMINI_API_URL}?key=${GEMINI_API_KEY}`,
+        {
+          contents: [
+            {
+              parts: [
+                { text: prompt }
+              ]
+            }
+          ],
+          generationConfig: {
+            temperature: 0.7,
+            topK: 40,
+            topP: 0.95,
+            maxOutputTokens: 1024,
+          }
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+      );
+      
+      // Extract the response text
+      const generatedText = response.data.candidates[0].content.parts[0].text;
+      setResponse(generatedText);
+    } catch (error: any) {
+      console.error('Gemini API Error:', error);
+      if (error.response) {
+        setError(`Gemini API Error: ${error.response.data.error?.message || 'Unknown error'}`);
+      } else {
+        setError('Failed to connect to Gemini API');
+      }
     }
   };
 
@@ -53,13 +109,29 @@ export default function QuestionForm() {
                 Doubt Solver
               </h1>
               <p className="text-center text-gray-500 mt-2">
-                Get comprehensive answers across various subjects
+                Get comprehensive answers across various subjects powered by Gemini AI
               </p>
             </div>
 
             {/* Main Form Container */}
             <div className="bg-white shadow-2xl rounded-b-xl overflow-hidden">
               <form onSubmit={handleSubmit} className="p-8 space-y-6">
+                {/* API Toggle */}
+                <div className="flex items-center justify-end">
+                  <label className="relative inline-flex items-center cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={useGemini}
+                      onChange={() => setUseGemini(!useGemini)}
+                      className="sr-only peer"
+                    />
+                    <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-indigo-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                    <span className="ml-3 text-sm font-medium text-gray-700">
+                      {useGemini ? 'Using Gemini API' : 'Using Local API'}
+                    </span>
+                  </label>
+                </div>
+
                 {/* Subject Selector */}
                 <div>
                   <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
@@ -178,7 +250,7 @@ export default function QuestionForm() {
                     <h3 className="text-lg font-semibold text-gray-800 mb-3">
                       Answer
                     </h3>
-                    <div className="text-gray-700 leading-relaxed">
+                    <div className="text-gray-700 leading-relaxed whitespace-pre-wrap">
                       {response}
                     </div>
                   </div>
@@ -188,7 +260,7 @@ export default function QuestionForm() {
 
             {/* Footer */}
             <div className="text-center text-gray-500 mt-4 text-sm">
-              Powered by AI | Comprehensive Knowledge Assistance
+              Powered by Gemini AI | Comprehensive Knowledge Assistance
             </div>
           </div>
         </div>

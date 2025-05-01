@@ -15,15 +15,15 @@ interface TranslationState {
 const translations = {
   en: {
     // Footer Title and Basic Info
-    footer_title: "NavShiksha: Empowering Rural Education, Together",
-    registered_office: "Registered Office: Boys Hostel G-114, IIT Shahdara, Delhi 110032",
+    footer_title: "Rural Learn: Empowering Rural Education, Together",
+    registered_office: "Registered Office: USAR GGSIPU || UCER Collaboration",
     registered_office_note: "(Yes, we take education seriously, and we're just getting started)",
     email_label: "Email:",
     email_note: "(Your queries fuel our mission!)",
 
     // Mission Section
     our_mission_title: "Our Mission",
-    our_mission: "NavShiksha is dedicated to bridging the educational divide in rural communities. Because quality education shouldn't be limited by geography.",
+    our_mission: "Rural Learn is dedicated to bridging the educational divide in rural communities. Because quality education shouldn't be limited by geography.",
     our_mission_closing: "We're here to inspire, empower, and support every learner.",
 
     // Transparency Section
@@ -34,7 +34,7 @@ const translations = {
     all_rights_reserved: "All Rights Reserved.",
 
     // Team Section - Names and Designations
-    meet_team_title: "Meet the NavShiksha Team:",
+    meet_team_title: "Meet the Rural Learn Team:",
     team_priyanshu: "Priyanshu Raj",
     team_priyanshu_designation: "Frontend Lead",
     team_satyam: "Satyam Chettri", 

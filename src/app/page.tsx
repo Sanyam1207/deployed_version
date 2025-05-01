@@ -1,12 +1,10 @@
 'use client'
-import LoginSection from "@/section/LoginSection";
+import { CardHoverEffectDemo } from "@/section/CardHover";
 import { Footer } from "@/section/Footer";
-import { ProductShowcase } from "@/section/ProductShowcase";
+import LoginSection from "@/section/LoginSection";
+import { useRef } from "react";
 import BackGroundBeams from '../section/BackGroundBeams';
 import NavBar from '../section/NavBar';
-import { CardHoverEffectDemo } from "@/section/CardHover";
-import { useRef } from "react";
-import { redirect } from 'next/navigation';
 
 // import { LanguageSwitcher } from "@/section/languageSwitcher";
 

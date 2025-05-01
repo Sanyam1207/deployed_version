@@ -1,15 +1,14 @@
 // NavbarDemo.tsx
 "use client";
-import React, { act, useState } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "../component/ui/navbar-menu";
-import { cn } from "../../lib/utils";
-import Link from "next/link";
-import ThemeToggle from "./ThemeToggle";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@/redux/store';
 import { setLanguage } from '@/redux/translationSlice';
-import { FaLanguage, FaRobot } from "react-icons/fa";
+import Link from "next/link";
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { FaRobot } from "react-icons/fa";
+import { useDispatch, useSelector } from 'react-redux';
+import { HoveredLink, Menu, MenuItem, ProductItem } from "../component/ui/navbar-menu";
+import ThemeToggle from "./ThemeToggle";
 
 export default function NavbarDemo({ onLoginClick }: { onLoginClick: any }) {
     return (

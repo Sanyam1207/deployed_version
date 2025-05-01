@@ -6,7 +6,7 @@ const ChatbotInterface = () => {
   const [messages, setMessages] = useState([
     { 
       id: 0, 
-      text: "Hi! I'm NavShiksha's AI assistant. How can I help you today?", 
+      text: "Hi! I'm Rural Learn's AI assistant. How can I help you today?", 
       sender: 'bot' 
     }
   ]);
@@ -66,7 +66,7 @@ const ChatbotInterface = () => {
       {/* Header */}
       <div className="bg-blue-600 text-white p-4 rounded-t-xl flex items-center">
         <MessageCircle className="mr-2" />
-        <h2 className="text-lg font-semibold">NavShiksha Chatbot</h2>
+        <h2 className="text-lg font-semibold">Rural Learn Chatbot</h2>
       </div>
 
       {/* Messages Container */}
